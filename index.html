@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polytoria Shirt Tester</title>
+
+    <link rel="icon" href="https://polytoria.com/favicon.ico">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="main-container">
+    <div class="controls-panel">
+        <div>
+            <h1 class="header-title"><i class="fas fa-tshirt me-2"></i>Shirt Tester</h1>
+            <p class="text-muted small">Upload or paste a URL to preview clothing assets.</p>
+        </div>
+
+        <div class="section-label">1. Asset Source</div>
+
+        <div class="upload-zone mb-3">
+            <input type="file" id="fileUpload" accept="image/*">
+            <i class="fas fa-cloud-upload-alt fa-2x text-muted mb-2"></i>
+            <div class="fw-bold">Click to Upload File</div>
+            <div class="small text-muted">Supports PNG, JPG</div>
+        </div>
+
+        <div class="input-group mb-2">
+            <span class="input-group-text bg-light"><i class="fas fa-link"></i></span>
+            <input type="text" id="textureUrl" class="form-control" placeholder="Or paste Image URL...">
+        </div>
+
+        <div class="section-label">2. Apply Asset</div>
+        <div class="row g-2">
+            <div class="col-6">
+                <button class="btn-poly" onclick="processAsset('shirt')">Shirt</button>
+            </div>
+            <div class="col-6">
+                <button class="btn-poly" onclick="processAsset('pants')">Pants</button>
+            </div>
+            <div class="col-12">
+                <button class="btn-secondary-poly" onclick="processAsset('face')">Face</button>
+            </div>
+        </div>
+
+        <div class="section-label">3. Body Colors</div>
+        <div class="color-grid">
+            <div class="color-item">
+                <label>Head</label>
+                <input type="color" value="#ffffff" oninput="updateColor('head', this.value)">
+            </div>
+            <div class="color-item">
+                <label>Torso</label>
+                <input type="color" value="#ffffff" oninput="updateColor('torso', this.value)">
+            </div>
+            <div></div>
+
+            <div class="color-item">
+                <label>L Arm</label>
+                <input type="color" value="#ffffff" oninput="updateColor('leftArm', this.value)">
+            </div>
+            <div class="color-item">
+                <label>R Arm</label>
+                <input type="color" value="#ffffff" oninput="updateColor('rightArm', this.value)">
+            </div>
+            <div></div>
+
+            <div class="color-item">
+                <label>L Leg</label>
+                <input type="color" value="#ffffff" oninput="updateColor('leftLeg', this.value)">
+            </div>
+            <div class="color-item">
+                <label>R Leg</label>
+                <input type="color" value="#ffffff" oninput="updateColor('rightLeg', this.value)">
+            </div>
+        </div>
+
+        <div class="mt-auto pt-4">
+            <button class="btn btn-outline-secondary w-100 btn-sm" onclick="window.reset3dView && window.reset3dView()">
+                <i class="fas fa-undo me-1"></i> Reset Character
+            </button>
+        </div>
+    </div>
+
+    <div class="viewer-panel">
+        <div class="viewer-badge"><i class="fas fa-cube me-1"></i> 3D Preview</div>
+        <canvas
+            id="canvas"
+            class="avatarEditorCanvas"
+            data-options="eyJ1c2VDaGFyYWN0ZXIiOnRydWUsIml0ZW1zIjpbXX0="
+            width="478"
+            height="478">
+        </canvas>
+    </div>
+</div>
+
+<script type="module" src="itemview.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
